@@ -1,0 +1,10 @@
+.Fcard *{
+    transition: .5s;
+}
+
+.Fcard:hover,
+.Fcard:hover i
+{
+    border-color: var(--theme-clr);
+    color: var(--theme-clr);
+}
