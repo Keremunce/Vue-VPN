@@ -26,44 +26,10 @@
                         <div class="box my-4" v-for="(item,index) in items" :key="index">
                             <div :class="{ active: item.active}" @click="toggleActive(index)">
                                 <div class="card Fcard d-flex  flex-row justify-content-center align-items-center" style="padding: 1rem 2rem !important">
-                                    <p> <label :for="item.title">{{item.title}}</label>  </p>
+                                    <p> <label>{{item.title}}</label>  </p>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- <div class="box my-4"  v-for='(item, index) in items' :key="index">
-                            <div :class="{ active: item.active}" @click="toggleActive(index)">
-
-                                
-                            </div>
-                        </div> -->
-
-                        <!-- <div class="box my-4" 
-                            :class="boxBSelected ? 'active' : '' "
-                            @click= "onBoxSelected('B')">
-
-                            <div class="card Fcard d-flex flex-row justify-content-center align-items-center" style="padding: 1rem 2rem !important">
-                                <p>{{ item }} </p>
-                            </div>
-
-                        </div>
-
-                        <div class="box" 
-                            :class="boxCSelected ? 'active' : '' "
-                            @click= "onBoxSelected('C')">
-
-                            <div class="card Fcard d-flex  flex-row justify-content-center align-items-center" style="padding: 1rem 2rem !important">
-                                <p>{{ item }} </p>
-                            </div>
-                        </div>
-
-                        <div class="box my-4" :class="boxDSelected ? 'active' : '' " @click= "onBoxSelected('D')">
-
-                            <div class="card  Fcard d-flex flex-row  justify-content-center align-items-center" style="padding: 1rem 2rem !important">
-                                <p>{{ item }} </p>
-                            </div>
-
-                        </div> -->
 
                         <div class="Opportunity AboutBtn ">
                             <router-link to="/eighthPage" class="StartBtn">Continue <img width="16" src="https://i.hizliresim.com/agv40t1.png" alt="" class="img-fluid "></router-link>
@@ -76,7 +42,6 @@
             </div>
 
            
-
         </section>
     </div>
 </template>
@@ -92,10 +57,10 @@ export default {
                         title: 'American continent(1-3 country)',
                     },
                     {
-                        title: 'American continent(1-3 country)',
+                        title: 'American continent(1-6 country)',
                     },
                     {
-                        title: 'American continent(1-3 country)',
+                        title: 'American continent(1-10 country)',
                     }
                 ]
             }
