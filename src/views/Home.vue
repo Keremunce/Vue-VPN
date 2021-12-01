@@ -1,10 +1,9 @@
 <template>
-    <div>
-        <section class="mainPage ">
-            <div class="container-fluid">
+    <div class="mainPage">
+        <section class=" container-fluid">
                 <div class="row justify-content-center align-items-center text-start py-5">
                 <!-- TEXT SECTION -->
-                    <div class="col-md-6"> 
+                    <div class="col-md-6 my-4"> 
                         <div class="mainText">
                             <h1>Unlimited access to the whole world Get real privacy</h1>
                             <h5>Connect to dozens of different locations at high speed</h5>
@@ -15,8 +14,8 @@
                             <Counter />
                         </div>
                         
-                        <div class="Opportunity">
-                            <router-link to="/about">Don't miss the Opportunity</router-link>
+                        <div class="my-5">
+                            <router-link to="/about" class="Opportunity">Don't miss the Opportunity</router-link>
                             <router-view></router-view>
                         </div>
 
@@ -33,7 +32,6 @@
                     </div>
                     <!-- DEVICE END -->
                 </div>
-            </div>
 
             <div class="footer">
                 <div >

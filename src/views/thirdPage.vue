@@ -1,7 +1,7 @@
 <template>
     <div>
         <section class="ThirdPage">
-            <router-link to="/about" class="BackBtn"> <i class="fas fa-angle-left"></i> Back</router-link>
+            <router-link to="/about" class="BackBtn"> <img src="https://img.icons8.com/ios-glyphs/30/000000/back.png"/></router-link>
             <router-view></router-view>
 
             <div class="container">
@@ -28,12 +28,19 @@
                             <img width="100" src="https://i.hizliresim.com/b3euzvb.jpg" alt="" class="img-fluid">
                         </div>
 
-                        <p><b>Milica Vukovic</b> USA</p>
+                        <p><b>Milica Vukovic</b> USA</p>                        
                     </div>
 
-                    <div class="Opportunity AboutBtn">
-                        <router-link to="/fourthPage" class="StartBtn">Go ahead! <img width="16" src="https://i.hizliresim.com/agv40t1.png" alt="" class="img-fluid "></router-link>
-                        <router-view></router-view>
+
+                </div>
+
+                <div class="row justify-content-center align-items-center ">
+                    <div class="col-md-2">
+                        <div class="Opportunity ">
+                            <router-link to="/fourthPage" class=" StartBtn ">Go ahead!<img width="16" src="https://i.hizliresim.com/agv40t1.png" alt="" class="img-fluid ">
+                            </router-link>
+                            <router-view></router-view>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -47,6 +54,20 @@
     }
 </script>
 
-<style lang="scss" scoped>
+<style  scoped>
+.ThirdPage{
+    background-color: hsl(0, 0%, 95%);
+    height: 100vh;
+}
+.circleCustomer{
+    margin: 1rem;
+}
+.circleCustomer  img{
+    border-radius: 100%!important;
+    object-fit: cover!important;
+}
+.ThirdPage .card{
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
 
 </style>

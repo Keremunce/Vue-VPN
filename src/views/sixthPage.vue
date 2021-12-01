@@ -4,7 +4,7 @@
         <section class="AboutSection d-flex flex-column justify-content-center align-items-start text-center pt-5">
 
             <div>
-                <router-link to="/fifthPage" class="BackBtn"> <i class="fas fa-angle-left"></i> Back</router-link>
+                <router-link to="/fifthPage" class="BackBtn"> <img src="https://img.icons8.com/ios-glyphs/30/000000/back.png"/></router-link>
                 <router-view></router-view>
             </div>
 
