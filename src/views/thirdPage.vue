@@ -1,20 +1,21 @@
 <template>
     <div>
         <section class="ThirdPage">
-            <router-link to="/about" class="BackBtn"> <img src="https://img.icons8.com/ios-glyphs/30/000000/back.png"/></router-link>
+            <router-link to="/about" class="BackBtn"> 
+                <img src="https://i.hizliresim.com/t8o0zvr.png" class="mobile img-fluid" width="50"/>
+                <img src="https://i.hizliresim.com/60p7jc1.png" class="desktop img-fluid" width="40"/>
+            </router-link>
             <router-view></router-view>
 
             <div class="container">
                 <div class="row justify-content-center align-items-center text-center">
-                    <div class="col-md-12">
-                        <h1>Vue-Vpn</h1>
-                    </div>
+                    <Header />
 
                     <div class="col-md-12 py-2">
                         <h2>Vue-VPN Customer Comments</h2>
                     </div>
 
-                    <div class="col-md-4 card py-5">
+                    <div class=" col-xs-10 col-sm-6 col-md-7 card py-5">
                         <div class="d-flex justify-content-center align items-center mt-1 mb-5" >
                             <img width="50" src="https://i.hizliresim.com/rld0yew.png" alt="" class="img-fluid me-3">
                             <img width="50" src="https://i.hizliresim.com/rld0yew.png" alt="" class="img-fluid me-3">
@@ -35,9 +36,9 @@
                 </div>
 
                 <div class="row justify-content-center align-items-center ">
-                    <div class="col-md-2">
-                        <div class="Opportunity ">
-                            <router-link to="/fourthPage" class=" StartBtn ">Go ahead!<img width="16" src="https://i.hizliresim.com/agv40t1.png" alt="" class="img-fluid ">
+                    <div class=" col-sm-6 text-center">
+                        <div class="my-5 ">
+                            <router-link to="/fourthPage" class=" StartBtn Opportunity">Go ahead!<img width="16" src="https://i.hizliresim.com/agv40t1.png" alt="" class="img-fluid " id="ThirdPageIcon">
                             </router-link>
                             <router-view></router-view>
                         </div>
@@ -49,8 +50,13 @@
 </template>
 
 <script>
+import Header from '@/components/header.vue'
+
     export default {
-        
+        el: '#app'  ,
+        components: {
+            Header
+        }
     }
 </script>
 
@@ -69,5 +75,6 @@
 .ThirdPage .card{
     box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
 }
+
 
 </style>

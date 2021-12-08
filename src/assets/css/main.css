@@ -4,12 +4,7 @@
     --theme-clr: #1488CC;
     --theme-clr-2: #2B32B2;
 }
-.mainPage{
-    background: url(https://i.hizliresim.com/t2il7hd.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-}
+
 .mainText{
     line-height: 1.16;
     
@@ -33,6 +28,11 @@
     border-radius: 5px;
     font-family: 'Oxygen', sans-serif!important;
     font-size: 1.5em;
+    position: relative;
+    font-size: clamp(1rem, 100vw, .9rem);
+}
+.Opportunity:hover{
+    color: #fff!important;
 }
 .StartBtn{
     transition: .5s;
@@ -42,8 +42,16 @@
     position: absolute;
     transition: .5s;
     top: 50%;
-    left: 100%;
+    left: 80%;
     transform: translate(50%,-50%);
+}
+#AboutNextIcon{
+    top: 52%!important;
+    left: 70%!important;
+}
+#ThirdPageIcon{
+    top: 50%!important;
+    left: 80%!important;
 }
 .StartBtn:hover img{
     margin-left: .5rem;
@@ -72,9 +80,9 @@ ul{
 /* COUNTER END */
 
 .BackBtn{
-    padding: 1rem 2rem;
     position: absolute;
     top: 6%;
+    left: 2%;
 }
 section{
     position: relative;
@@ -94,7 +102,6 @@ section{
 .AboutText{
     background: hsl(0, 0%, 95%);
     height: 86vh;
-    overflow: hidden;
     color: #333;
 }
 .AboutText h1{
@@ -103,4 +110,27 @@ section{
 }
 .About_info{
     color: #737380;
+}
+
+@media (max-width: 860px){
+    .Opportunity{
+        padding:    .5rem 2rem .5rem 1rem!important;
+    }
+}
+
+@media (max-width: 767px) {
+    img.mobile {
+        display: none!important;
+    }
+}
+@media (min-width: 767px) {
+    img.desktop {
+        display: none!important;
+
+    }   
+}
+.pop-up{
+    background-color: #defdef;
+    border-radius: 5px;
+    padding: 2rem;
 }
