@@ -1,3 +1,5 @@
 module.exports =  {
-  publicPath: '/vue-vpn/'
+  publicPath: process.env.NODE_ENV === 'production'
+  ? '/vue-vpn/'
+  : '('
 }
