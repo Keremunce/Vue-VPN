@@ -21,45 +21,17 @@
                         <h2 class="fw-bolder mb-5">Share your Vue-VPN plan with other family members. would you like to share?</h2>
 
                     </div>
-                    
-                    <div class="col-md-3">
 
-                        <div>
-                            <router-link to="/ninethPage">
-                                <div class="card Fcard d-flex  flex-row justify-content-center align-items-center" style="padding: 1rem 2rem !important">
-                                    <p>2 person family plan</p>
-                                </div>
-                            </router-link>
-                            <router-view></router-view>
-                        </div>
-
-                        <div>
-                            <router-link to="/ninethPage">
-                                <div class="card Fcard d-flex flex-row my-5 justify-content-center align-items-center" style="padding: 1rem 2rem !important">
-                                    <p>4 person family plan</p>
-                                </div>
-                            </router-link>
-
-                            <router-view></router-view>
-                        </div>
-
-                        <div>
-                            <router-link to="/ninethPage">
-                                <div class="card Fcard d-flex  flex-row justify-content-center align-items-center" style="padding: 1rem 2rem !important">
-                                    <p>6 person family plan</p>
-                                </div>
-                            </router-link>
-                            <router-view></router-view>
-                        </div>
-
-                        <div>
-                            <router-link to="/ninethPage">
-                                <div class="card Fcard d-flex flex-row my-5 justify-content-center align-items-center" style="padding: 1rem 2rem !important">
-                                    <p>Just for myself</p>
-                                </div>
-                            </router-link>
-
-                            <router-view></router-view>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="box my-5" v-for="(item, index) in items" :key="index" >
+                            <div class="innerBox">
+                                <router-link to="/ninethPage">
+                                    <div class="card Fcard d-flex  flex-row justify-content-center align-items-center" style="padding: 1rem 2rem !important">
+                                        <p>{{item.title}}</p>
+                                    </div>
+                                </router-link>
+                                <router-view></router-view>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -75,6 +47,16 @@ import Header from '@/components/header.vue'
 
     export default {
         el: '#app',
+        data () {
+            return {
+                items: [
+                    {title: '2 person family plan',},
+                    {title: '4 person family plan',},
+                    {title: '6 person family plan'},
+                    {title: 'Just for myself',}
+                ]
+            }
+        },
         components:{
             Header
         }

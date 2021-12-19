@@ -5,9 +5,12 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "deploy": "sh deploy.sh"
   },
   "dependencies": {
+    "@vuelidate/core": "^2.0.0-alpha.32",
+    "@vuelidate/validators": "^2.0.0-alpha.25",
     "core-js": "^3.6.5",
     "node": "^12.22.7",
     "node-sass": "^6.0.1",
@@ -15,7 +18,8 @@
     "vue-ellipse-progress": "^2.0.0",
     "vue-router": "^4.0.12",
     "vue3-autocounter": "^1.0.6",
-    "vue3-circle-progress": "^1.0.7"
+    "vue3-circle-progress": "^1.0.7",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",

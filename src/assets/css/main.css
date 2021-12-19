@@ -99,9 +99,12 @@ section{
     color: var(--theme-clr);
 }
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@700&display=swap');
+.AboutSection{
+    height: 100vh!important;
+}
 .AboutText{
     background: hsl(0, 0%, 95%);
-    height: 86vh;
+    height: 100%!important;
     color: #333;
 }
 .AboutText h1{

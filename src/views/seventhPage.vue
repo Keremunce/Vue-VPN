@@ -20,9 +20,7 @@
                         <h5>You can choose more than one.</h5>
                     </div>
 
-                    <div class="col-md-3">
-
-
+                    <div class="col-md-6 col-lg-4">
                         <div class="box my-4" v-for="(item, index) in items" :key="index" >
                             <div :class="{ active: selectedItem(item.title)}" @click="toggleActive(item.title)" class="innerBox">
                                 <div >
@@ -34,7 +32,7 @@
                         <div class="row justify-content-center align-items-center ">
                             <div class=" col-sm-6 text-center">
                                 <div class="my-5 ">
-                                    <router-link to="/eighthPage" class="button StartBtn Opportunity" :class="{ ClassDisabled: active1 }" >
+                                    <router-link to="/eighthPage" class="button StartBtn Opportunity" :class="{ ClassDisabled: active }" >
                                         Continue<img width="16" src="https://i.hizliresim.com/agv40t1.png" alt="" class="img-fluid " id="ThirdPageIcon">
                                     </router-link>
                                     <router-view></router-view>
@@ -63,7 +61,7 @@ export default {
                     {title: 'Europe continent(1-6 country)',},
                     {title: 'Asia continent(1-10 country)',}
                 ],
-                active1: false,
+                active: false,
                 selected: [],
             }
         },
@@ -81,8 +79,7 @@ export default {
             else {
                 this.selected.push(item)
             }
-            this.selected.length ? this.active1 = true : this.active1 = false
-
+            this.selected.length ? this.active = true : this.active = false
         },
     },
 }
@@ -102,6 +99,8 @@ export default {
     border-radius: 5px;
     box-shadow: 0 0 0 1px #1488CC;
     color: #2B32B2;
+    background: #fff;
+
 }
 .disabled {
     pointer-events:none; 

@@ -21,44 +21,16 @@
 
                     </div>
                     
-                    <div class="col-md-3">
-
-                        <div>
-                            <router-link to="/seventhPage">
-                                <div class="card Fcard d-flex  flex-row justify-content-center align-items-center" style="padding: 1rem 2rem !important">
-                                    <p>1-2 GB between</p>
-                                </div>
-                            </router-link>
-                            <router-view></router-view>
-                        </div>
-
-                        <div>
-                            <router-link to="/seventhPage">
-                                <div class="card Fcard d-flex flex-row my-5 justify-content-center align-items-center" style="padding: 1rem 2rem !important">
-                                    <p>2-5 GB between</p>
-                                </div>
-                            </router-link>
-
-                            <router-view></router-view>
-                        </div>
-
-                        <div>
-                            <router-link to="/seventhPage">
-                                <div class="card Fcard d-flex  flex-row justify-content-center align-items-center" style="padding: 1rem 2rem !important">
-                                    <p>5-10 GB between</p>
-                                </div>
-                            </router-link>
-                            <router-view></router-view>
-                        </div>
-
-                        <div>
-                            <router-link to="/seventhPage">
-                                <div class="card Fcard d-flex flex-row my-5 justify-content-center align-items-center" style="padding: 1rem 2rem !important">
-                                    <p>Limitless</p>
-                                </div>
-                            </router-link>
-
-                            <router-view></router-view>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="box my-5" v-for="(item, index) in items" :key="index" >
+                            <div class="innerBox">
+                                <router-link to="/seventhPage">
+                                    <div class="card Fcard d-flex  flex-row justify-content-center align-items-center" style="padding: 1rem 2rem !important">
+                                        <p>{{item.title}}</p>
+                                    </div>
+                                </router-link>
+                                <router-view></router-view>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -75,6 +47,16 @@ import Header from '@/components/header.vue'
 
     export default {
         el: '#app',
+        data () {
+            return {
+                items: [
+                    {title: '1-2 GB between',},
+                    {title: '2-5 GB between',},
+                    {title: '5-10 GB between'},
+                    {title: 'Limitless',}
+                ]
+            }
+        },
         components:{
             Header
         }

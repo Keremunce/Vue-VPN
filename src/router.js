@@ -51,6 +51,21 @@ const routes = [
         path: "/ninethPage",
         component: () => import("@/views/ninethPage")
     },
+    {
+        name: "TenthPage",
+        path: "/tenthPage",
+        component: () => import("@/views/tenthPage")
+    },
+    {
+        name: "KrediForm",
+        path: "/Kredi_Form",
+        component: () => import("@/views/Kredi_Form")
+    },
+    {
+        name: "DownloadSection",
+        path: "/DownloadSection",
+        component: () => import("@/views/DownloadSection")
+    },
 
 ];
 const router = createRouter({

@@ -1,12 +1,14 @@
 <template>
     <div>
-        <section class="ThirdPage">
+        <section class="AboutSection">
             <router-link to="/about" class="BackBtn"> 
                 <img src="https://i.hizliresim.com/t8o0zvr.png" class="mobile img-fluid" width="50"/>
                 <img src="https://i.hizliresim.com/60p7jc1.png" class="desktop img-fluid" width="40"/>
             </router-link>
             <router-view></router-view>
 
+
+        <div class="AboutText">
             <div class="container">
                 <div class="row justify-content-center align-items-center text-center">
                     <Header />
@@ -45,6 +47,7 @@
                     </div>
                 </div>
             </div>
+        </div>
         </section>
     </div>
 </template>

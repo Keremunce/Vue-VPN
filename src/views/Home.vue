@@ -4,25 +4,40 @@
                 <div class="row justify-content-center align-items-center text-start py-5">
                 <!-- TEXT SECTION -->
                     <div class="col-xs-12 col-md-6 my-4"> 
-                        <div class="mainText">
-                            <h1>Unlimited access to the whole world Get real privacy</h1>
-                            <h5>Connect to dozens of different locations at high speed</h5>
-                            <h6>Limited time offer 7-day trial 1.00 $</h6>
+                        <div class="mb-5">
+                            <div class="mainText">
+                                <h1>Unlimited access to the whole world Get real privacy</h1>
+                                <h5>Connect to dozens of different locations at high speed</h5>
+                                <h6>Limited time offer 7-day trial 1.00 $</h6>
+                            </div>
+
+                            <div class="timerDiv">
+                                <Counter />
+                            </div>
+                            
+                            <div class="my-5 ">
+                                <router-link to="/about" class="Opportunity">Don't miss the Opportunity</router-link>
+                                <router-view></router-view>
+                            </div>
+
+                            <p class="d-flex align-items-center justify-content-start">
+                                <img width="30" src="https://i.hizliresim.com/de2kkzb.png" alt="" class="img-fluid me-2"> 
+                                30 days money back guarantee 
+                            </p>
                         </div>
 
-                        <div class="timerDiv">
-                            <Counter />
+                        <div class="footer mt-5 pt-5">
+                            <div >
+                                <ul class="d-flex flex-wrap justify-content-start align-items-center py-4 px-0">
+                                    <li class="m-2 mx-4"><a href="#">Support</a></li>
+                                    <li class="m-2 mx-4"><a href="#">Manage Subscription</a></li>
+                                    <li class="m-2 mx-4"><a href="#">Privacy Policy</a></li>
+                                    <li class="m-2 mx-4"><a href="#">Terms of Use</a></li>
+                                </ul>
+                                
+                                
+                            </div>
                         </div>
-                        
-                        <div class="my-5 ">
-                            <router-link to="/about" class="Opportunity">Don't miss the Opportunity</router-link>
-                            <router-view></router-view>
-                        </div>
-
-                        <p class="d-flex align-items-center justify-content-start">
-                            <img width="30" src="https://i.hizliresim.com/de2kkzb.png" alt="" class="img-fluid me-2"> 
-                            30 days money back guarantee 
-                        </p>
                     </div> 
                 <!-- TEXT SECTION END -->
 
@@ -33,18 +48,7 @@
                     <!-- DEVICE END -->
                 </div>
 
-            <div class="footer">
-                <div >
-                    <ul class="d-flex flex-wrap justify-content-evenly align-items-center py-4 px-0">
-                        <li class="m-2"><a href="#">Support</a></li>
-                        <li class="m-2"><a href="#">Manage Subscription</a></li>
-                        <li class="m-2"><a href="#">Privacy Policy</a></li>
-                        <li class="m-2"><a href="#">Terms of Use</a></li>
-                    </ul>
-                    
-                    
-                </div>
-            </div>
+
 
         </section>
 </template>

@@ -21,30 +21,20 @@
 
                     </div>
 
-                    <div class="col-lg-4 col-md-6 col-sm-7 mt-5">
-
-                        <div>
-                            <router-link to="/fifthPage">
-                                <div class="card Fcard d-flex  flex-row justify-content-start align-items-center" style="height: 50px">
-                                    <i class="fab fa-apple mx-3 img-fluid" style="font-size: 1.5rem;" ></i>
-                                    <p>IOS</p>
-                                </div>
-                            </router-link>
-                            <router-view></router-view>
-                        </div>
-
-                        <div>
-                            <router-link to=/fifthPage>
-                                <div class="card Fcard d-flex flex-row my-5 justify-content-start align-items-center" style="height: 50px">
-                                    <i class="fab fa-android mx-3 img-fluid" style="font-size: 1.5rem;" ></i>
-                                    <p>Android</p>
-                                </div>
-                            </router-link>
-
-                            <router-view></router-view>
-
+                    <div class="col-md-6 col-lg-4">
+                        <div class="box my-5" v-for="(item, index) in items" :key="index" >
+                            <div class="innerBox">
+                                <router-link to="/fifthPage">
+                                    <div  class="card Fcard d-flex  flex-row justify-content-start align-items-center" style="padding: 1rem 2rem !important">
+                                        <i class="fab mx-3 img-fluid" style="font-size: 1.5rem" :class="item.icon"> </i>
+                                        <p>{{item.title}}</p>
+                                    </div>
+                                </router-link>
+                                <router-view></router-view>
+                            </div>
                         </div>
                     </div>
+
                 </div>
                 
 
@@ -59,6 +49,14 @@ import Header from '@/components/header.vue'
 
     export default {
         el: '#app',
+        data() {
+            return {
+                items: [
+                    {title: 'Android', icon: '<i class="fab fa-android mx-3 img-fluid" style="font-size: 1.5rem;" ></i>'},
+                    {title: 'IOS', icon: '<i class="fab fa-apple mx-3 img-fluid" style="font-size: 1.5rem;" ></i>' }
+                ]
+            }
+        },
         components:{
             Header
         }

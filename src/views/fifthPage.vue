@@ -20,45 +20,17 @@
                         <h2 class="fw-bolder my-5">What is the purpose of using VPN?</h2>
 
                     </div>
-                    
-                    <div class="col-md-3">
 
-                        <div>
-                            <router-link to="/sixthPage">
-                                <div class="card Fcard d-flex  flex-row justify-content-center align-items-center" style="padding: 1rem 2rem !important">
-                                    <p>Protect Privacy</p>
-                                </div>
-                            </router-link>
-                            <router-view></router-view>
-                        </div>
-
-                        <div>
-                            <router-link to="/sixthPage">
-                                <div class="card Fcard d-flex flex-row my-5 justify-content-center align-items-center" style="padding: 1rem 2rem !important">
-                                    <p>Bypass Censorship</p>
-                                </div>
-                            </router-link>
-
-                            <router-view></router-view>
-                        </div>
-
-                        <div>
-                            <router-link to="/sixthPage">
-                                <div class="card Fcard d-flex  flex-row justify-content-center align-items-center" style="padding: 1rem 2rem !important">
-                                    <p>Faster Internet</p>
-                                </div>
-                            </router-link>
-                            <router-view></router-view>
-                        </div>
-
-                        <div>
-                            <router-link to="/sixthPage">
-                                <div class="card Fcard d-flex flex-row my-5 justify-content-center align-items-center" style="padding: 1rem 2rem !important">
-                                    <p>I do not want to specify</p>
-                                </div>
-                            </router-link>
-
-                            <router-view></router-view>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="box my-5" v-for="(item, index) in items" :key="index" >
+                            <div class="innerBox">
+                                <router-link to="/sixthPage">
+                                    <div class="card Fcard d-flex  flex-row justify-content-center align-items-center" style="padding: 1rem 2rem !important">
+                                        <p>{{item.title}}</p>
+                                    </div>
+                                </router-link>
+                                <router-view></router-view>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -74,6 +46,16 @@ import Header from '@/components/header.vue'
 
     export default {
         el: '#app',
+        data () {
+            return {
+                items: [
+                    {title: 'Protect Privacy',},
+                    {title: 'Bypass Censorship',},
+                    {title: 'Faster Internet'},
+                    {title: 'I do not want to specify',}
+                ]
+            }
+        },
         components:{
             Header
         }
