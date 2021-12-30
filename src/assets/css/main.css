@@ -51,7 +51,7 @@
 }
 #ThirdPageIcon{
     top: 50%!important;
-    left: 80%!important;
+    left: 75%!important;
 }
 .StartBtn:hover img{
     margin-left: .5rem;
@@ -106,6 +106,7 @@ section{
     background: hsl(0, 0%, 95%);
     height: 100%!important;
     color: #333;
+    width: 100%;
 }
 .AboutText h1{
     font-family: 'Kanit', sans-serif;
@@ -113,6 +114,9 @@ section{
 }
 .About_info{
     color: #737380;
+}
+.CVV{
+    margin-left: 1rem !important;
 }
 
 @media (max-width: 860px){
@@ -125,6 +129,10 @@ section{
     img.mobile {
         display: none!important;
     }
+    .CVV{
+        margin-left: 0rem !important;
+    }
+
 }
 @media (min-width: 767px) {
     img.desktop {

@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid d-flex justify-content-center">
+    <div class="container-fluid text-center">
         <div class="  text-center mt-3">
             <h1>Vue-VPN</h1>
         </div>

@@ -1,6 +1,9 @@
 <template>
-        <section class="mainPage container-fluid">
+    <section class="AboutSection d-flex flex-column justify-content-center align-items-start text-center ">
+
+        <div class="mainPage container-fluid h-100">
             <Header />
+            <div class="container-fluid">
                 <div class="row justify-content-center align-items-center text-start py-5">
                 <!-- TEXT SECTION -->
                     <div class="col-xs-12 col-md-6 my-4"> 
@@ -47,10 +50,9 @@
                     </div>
                     <!-- DEVICE END -->
                 </div>
-
-
-
-        </section>
+            </div>
+        </div>
+    </section>
 </template>
 
 <script>
@@ -74,7 +76,7 @@ import Header from '@/components/header.vue'
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    min-height: 100%!important;
+    /* min-height: 100% !important; */
     position: relative;
 }
 </style>
