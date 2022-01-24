@@ -4,9 +4,9 @@
       <div class="container">
         <div class="row justify-content-evenly align-items-center  mt-5">
           <!-- COL-LEFT -->
-          <div class="col-sm-12 col-md-8 col-lg-6">
+          <div class="col-12 col-sm-12 col-md-8 col-lg-6 p-0">
             <VuePaycard :valueFields="valueFields" :isCardNumberMasked="false" class="my-5" />
-          </div>  
+          </div>
           <!-- COL-LEFT -->
           <!-- COL-RIGHT -->
           <div class="col-sm-12 col-md-8 col-lg-5 py-4 px-4 card ">
@@ -25,7 +25,7 @@
 
               <div class="col-12 my-3">
                 <div class="input-group mb-3">
-                  <input type="text" :id="inputFields.cardName" title="Name" v-letter-only
+                  <input type="text" @keypress="isString($event)" :id="inputFields.cardName" title="Name" v-letter-only
                     class="card-input__input form-control" :value="valueFields.cardName" @input="changeName"
                     data-card-field autocomplete="off" placeholder="Card Name" />
                 </div>
@@ -33,7 +33,8 @@
 
               <div class="col-xs-12  col-sm-12 col-md-5 ">
                 <div class="input-group mb-3">
-                  <select class="card-input__input -select form-control" :id="inputFields.cardMonth" aria-label="Card Month" title="Month" v-model="valueFields.cardMonth" data-card-field>
+                  <select class="card-input__input -select form-control" :id="inputFields.cardMonth"
+                    aria-label="Card Month" title="Month" v-model="valueFields.cardMonth" data-card-field>
                     <option value disabled selected>Month</option>
                     <option v-bind:value="n < 10 ? '0' + n : n" v-for="n in 12" v-bind:disabled="n < minCardMonth"
                       v-bind:key="n">{{generateMonthValue(n)}}</option>
@@ -47,21 +48,20 @@
                 </div>
               </div>
 
-              <div class=" col-xs-12 col-sm-12 col-md-3 CVV">
+              <div class=" col-xs-12 col-sm-12 col-md-3 CVV ">
                 <div class="input-group mb-3">
-                  <input type="tel" title="CVV" class="card-input__input form-control" v-number-only
-                    :id="inputFields.cardCvv" maxlength="4" :value="valueFields.cardCvv" @input="changeCvv"
-                    data-card-field autocomplete="off" placeholder="CVV" />
+                  <input type="tel" @keypress="isNumber($event)" title="CVV" class="card-input__input form-control"
+                    v-number-only :id="inputFields.cardCvv" maxlength="4" :value="valueFields.cardCvv"
+                    @input="changeCvv" data-card-field autocomplete="off" placeholder="CVV" />
                 </div>
               </div>
               <!-- INPUT GROUP -->
 
 
-
               <div class="col-12">
                 <div class="my-5 ">
                   <button @click="SubmitForm" to="/BuyingPage" class=" btn btn-primary w-100 p-3">
-                    Start Trial
+                    {{ translate('StartTrial') }}
                   </button>
                 </div>
               </div>
@@ -84,10 +84,12 @@
 
 <script>
   import VuePaycard from "vue-paycard";
-
+  import en from "../locales/en.js";
+  import tr from "../locales/tr.js";
 
   export default {
     name: 'FormComponent',
+    mixins: [en, tr],
 
     components: {
       VuePaycard
@@ -135,7 +137,8 @@
         cardYear: 'v-card-year',
         cardCvv: 'v-card-cvv'
       },
-      error: false
+      error: false,
+      lang: window.navigator.language.slice(0, 2),
     }),
     computed: {
       minCardMonth() {
@@ -150,19 +153,44 @@
         }
       }
     },
+    created() {
+            if (this.lang == 'en') {
+                return this.lang = 'en'
+            } else if (this.lang == 'tr') {
+                return this.lang = 'tr'
+            } else {
+                return this.lang = 'en'
+            }
+        },
     methods: {
+      translate(prop) {
+        return this[this.lang][prop];
+      },
 
       SubmitForm() {
-        if (this.valueFields.cardName && this.valueFields.cardNumber.length >= 14  && this.valueFields.cardMonth && this.valueFields.cardYear && this.valueFields.cardCvv.length >= 3) {
-          this.active =true
+        if (this.valueFields.cardName && this.valueFields.cardNumber.length >= 14 && this.valueFields.cardMonth && this
+          .valueFields.cardYear && this.valueFields.cardCvv.length >= 3) {
+          this.active = true
           const redirectPath = this.$route.query.redirect || "/DownloadSection";
           this.$router.push(redirectPath);
-          console.log("if deönüyor")
 
         } else {
           this.$route.params.pathMatch
           this.error = true
-          console.log("else deönüyor")
+        }
+      },
+      isString(e) {
+        let char = String.fromCharCode(e.keyCode); // Get the character
+        if (/^[A-Za-z]+$/.test(char)) return true; // Match with regex 
+        else e.preventDefault(); // If not match, don't add to input text
+      },
+      isNumber: function (evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if ((charCode > 31 && (charCode < 48 || charCode > 57)) && charCode !== 46) {
+          evt.preventDefault();
+        } else {
+          return true;
         }
       },
 
@@ -174,6 +202,7 @@
       changeName(e) {
         this.valueFields.cardName = e.target.value
         this.$emit('input-card-name', this.valueFields.cardName)
+
       },
       changeNumber(e) {
         this.valueFields.cardNumber = e.target.value
@@ -182,17 +211,14 @@
         if ((/^3[47]\d{0,13}$/).test(value)) {
           this.valueFields.cardNumber = value.replace(/(\d{4})/, '$1 ').replace(/(\d{4}) (\d{6})/, '$1 $2 ')
           this.cardNumberMaxLength = 17
-        } 
-        else if ((/^3(?:0[0-5]|[68]\d)\d{0,11}$/).test(value)) { // diner's club, 14 digits
+        } else if ((/^3(?:0[0-5]|[68]\d)\d{0,11}$/).test(value)) { // diner's club, 14 digits
           this.valueFields.cardNumber = value.replace(/(\d{4})/, '$1 ').replace(/(\d{4}) (\d{6})/, '$1 $2 ')
           this.cardNumberMaxLength = 16
-        } 
-        else if (/^62[0-9]\d*/.test(value)) {
+        } else if (/^62[0-9]\d*/.test(value)) {
           this.valueFields.cardNumber = value.replace(/(\d{6})/, '$1 ').replace(/(\d{6}) (\d{7})/, '$1 $2 ').replace(
             /(\d{6}) (\d{7}) (\d{6})/, '$1 $2 $3 ').replace(/(\d{5}) (\d{5}) (\d{5}) (\d{4})/, '$1 $2 $3 $4')
           this.cardNumberMaxLength = 21
-        }
-         else if ((/^\d{0,16}$/).test(value)) { // regular cc number, 16 digits
+        } else if ((/^\d{0,16}$/).test(value)) { // regular cc number, 16 digits
           this.valueFields.cardNumber = value.replace(/(\d{4})/, '$1 ').replace(/(\d{4}) (\d{4})/, '$1 $2 ').replace(
             /(\d{4}) (\d{4}) (\d{4})/, '$1 $2 $3 ')
           this.cardNumberMaxLength = 19
@@ -203,11 +229,12 @@
             .cardNumber.length - 1)
           // eslint-disable-next-line
           if (lastChar == ' ') {
-            this.valueFields.cardNumber = this.valueFields.cardNumber.substring(0, this.valueFields.cardNumber.length - 1)
+            this.valueFields.cardNumber = this.valueFields.cardNumber.substring(0, this.valueFields.cardNumber.length -
+              1)
           }
         }
-        if(this.valueFields.cardCvv){
-          if(e.target.value == ''  ){
+        if (this.valueFields.cardCvv) {
+          if (e.target.value == '') {
             this.active = false;
           } else {
             this.active = true;
@@ -289,7 +316,15 @@
     opacity: 1;
     background-color: blue;
     pointer-events: all;
-        transition: .5s;
+    transition: .5s;
   }
 
+  /* .CVV > div{
+  margin-left: 1rem;
+}
+@media (max-width: 768px) {
+  .CVV > div{
+    margin-left: 0rem !important;
+  }
+} */
 </style>

@@ -1,15 +1,15 @@
 <template>
     <div>
-        <section class=" d-flex flex-column justify-content-center align-items-start text-center pt-5">
+        <section class="d-flex flex-column justify-content-center align-items-start text-center pt-5">
 
             <Header />
             <div class="container-fluid" style="background: hsl(0, 0%, 95%);">
                 <div class="container">
                     <div class="row justify-content-center align-items-center text-center mt-5 pt-5">
-                        <div class="col-8">
-                            <h1>7 days free trial only $1</h1>
+                        <div class="col-lg-8">
+                            <h1>{{ translate('BuyingPageTitle1') }}</h1>
                             <p>
-                                Your plan includes unlimited access. If you do not cancel, it will be renewed as 24.99$ per month at the end of the trial.
+                                {{ translate('BuyingPageTitle2') }}
                             </p>
                         </div>
                     </div>
@@ -17,14 +17,6 @@
                     <CreditForm>
                     </CreditForm>
 
-
-                    <div class="row justify-content-end payment_img">
-                        <div class="col-4">
-                            <div>
-                                <img src="https://cdn-assets.zotlo.com/assets/platform3p/img/card-types.jpg?ver=249" class="img-fluid">
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
@@ -35,18 +27,31 @@
 <script>
 import Header from '@/components/header.vue'
 import CreditForm from '@/components/form.vue'
-
+    import en from "../locales/en.js";
+    import tr from "../locales/tr.js";
 
     export default {
         el: '#app',
+                mixins: [en, tr],
+
         data() {
             return {
                 active: false,
+                lang: window.navigator.language.slice(0, 2),
             }
         },
         components:{
             Header,
             CreditForm
+        },
+        created() {
+            if (this.lang == 'en') {
+                return this.lang = 'en'
+            } else if (this.lang == 'tr') {
+                return this.lang = 'tr'
+            } else {
+                return this.lang = 'en'
+            }
         },
         methods: {
             updateValueinput(event) {
@@ -59,7 +64,9 @@ import CreditForm from '@/components/form.vue'
                     this.active = true;
                 }
             },
-
+            translate(prop) {
+                return this[this.lang][prop];
+            }
         }
     }
 </script>

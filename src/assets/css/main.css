@@ -46,7 +46,7 @@
     transform: translate(50%,-50%);
 }
 #AboutNextIcon{
-    top: 52%!important;
+    top: 50%!important;
     left: 70%!important;
 }
 #ThirdPageIcon{
@@ -83,6 +83,7 @@ ul{
     position: absolute;
     top: 6%;
     left: 2%;
+    z-index: 10;
 }
 section{
     position: relative;
@@ -99,14 +100,22 @@ section{
     color: var(--theme-clr);
 }
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@700&display=swap');
-.AboutSection{
-    height: 100vh!important;
-}
+/* .AboutSection{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+} */
 .AboutText{
     background: hsl(0, 0%, 95%);
     height: 100%!important;
     color: #333;
     width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 0;
+    overflow: scroll;
 }
 .AboutText h1{
     font-family: 'Kanit', sans-serif;
@@ -115,7 +124,7 @@ section{
 .About_info{
     color: #737380;
 }
-.CVV{
+.CVV > div{
     margin-left: 1rem !important;
 }
 
@@ -125,20 +134,22 @@ section{
     }
 }
 
-@media (max-width: 767px) {
+@media (min-width: 767px) {
     img.mobile {
         display: none!important;
     }
-    .CVV{
+
+
+
+}
+@media (max-width: 767px) {
+    img.desktop {
+        display: none!important;
+    }   
+    .CVV > div{
         margin-left: 0rem !important;
     }
 
-}
-@media (min-width: 767px) {
-    img.desktop {
-        display: none!important;
-
-    }   
 }
 .pop-up{
     background-color: #defdef;

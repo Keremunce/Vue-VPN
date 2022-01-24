@@ -17,7 +17,7 @@
                 <div class="row justify-content-center align-items-center text-center ">
 
                     <div class="col-md-12 mb-5 pb-3">
-                        <h2 class="fw-bolder my-5">Choose your phone's operating system.</h2>
+                        <h2 class="fw-bolder my-5">{{ translate('FourthPageTitle1') }}</h2>
 
                     </div>
 
@@ -46,20 +46,39 @@
 
 <script>
 import Header from '@/components/header.vue'
-
+import en from "../locales/en.js";
+import tr from "../locales/tr.js";
     export default {
         el: '#app',
+        mixins: [en, tr],
         data() {
             return {
                 items: [
-                    {title: 'Android', icon: '<i class="fab fa-android mx-3 img-fluid" style="font-size: 1.5rem;" ></i>'},
-                    {title: 'IOS', icon: '<i class="fab fa-apple mx-3 img-fluid" style="font-size: 1.5rem;" ></i>' }
-                ]
+                    {title: 'Android', icon: '<i class=s"fab fa-android mx-3 img-fluid" style="font-size: 1.5rem;" ></i>'},
+                    {title: 'IOS', icon: '<i class="fab fa-apple mx-3 img-fluid" style="font-size: 1.5rem;" ></i>' },
+                ],
+                lang: window.navigator.language.slice(0, 2),
             }
         },
         components:{
             Header
-        }
+        },
+        created() {
+            window.addEventListener('resize', this.onResize);
+
+            if (this.lang == 'en') {
+                return this.lang = 'en'
+            } else if (this.lang == 'tr') {
+                return this.lang = 'tr'
+            } else {
+                return this.lang = 'en'
+            }
+        },
+        methods: {
+            translate(prop) {
+                return this[this.lang][prop];
+            }
+        },
     }
 </script>
 

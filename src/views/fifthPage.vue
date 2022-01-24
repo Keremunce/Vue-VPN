@@ -17,7 +17,7 @@
 
                 <div class="row justify-content-center align-items-center text-center">
                     <div class="col-md-12">
-                        <h2 class="fw-bolder my-5">What is the purpose of using VPN?</h2>
+                        <h2 class="fw-bolder my-5">{{ translate('FifthPageTitle1') }}</h2>
 
                     </div>
 
@@ -26,7 +26,7 @@
                             <div class="innerBox">
                                 <router-link to="/sixthPage">
                                     <div class="card Fcard d-flex  flex-row justify-content-center align-items-center" style="padding: 1rem 2rem !important">
-                                        <p>{{item.title}}</p>
+                                        <p>{{ translate(item.title) }}</p>
                                     </div>
                                 </router-link>
                                 <router-view></router-view>
@@ -43,22 +43,44 @@
 
 <script>
 import Header from '@/components/header.vue'
-
+    import en from "../locales/en.js";
+    import tr from "../locales/tr.js";
     export default {
         el: '#app',
+        mixins: [en, tr],
+
         data () {
             return {
                 items: [
-                    {title: 'Protect Privacy',},
-                    {title: 'Bypass Censorship',},
-                    {title: 'Faster Internet'},
-                    {title: 'I do not want to specify',}
-                ]
+                    {title: 'FifthPageTitle2',},
+                    {title: 'FifthPageTitle3',},
+                    {title: 'FifthPageTitle4'},
+                    {title: 'FifthPageTitle5',}
+                ],
+                lang: window.navigator.language.slice(0, 2),
+
             }
         },
         components:{
             Header
-        }
+        },
+
+        computed: {
+            translate() {
+                return (prop)=>this[this.lang][prop];
+            }
+        },
+        created() {
+            window.addEventListener('resize', this.onResize);
+
+            if (this.lang == 'en') {
+                return this.lang = 'en'
+            } else if (this.lang == 'tr') {
+                return this.lang = 'tr'
+            } else {
+                return this.lang = 'en'
+            }
+        },
     }
 </script>
 

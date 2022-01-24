@@ -16,15 +16,15 @@
             <div class="AboutText container-fluid ">
                 <div class="row justify-content-center align-items-center text-center ">
                     <div class="col-md-12 py-4">
-                        <h2 class="fw-bolder " >Which region do you prefer VPN connection from?</h2>
-                        <h5>You can choose more than one.</h5>
+                        <h2 class="fw-bolder " >{{ translate('SeventhPageTitle1') }}</h2>
+                        <h5>{{ translate('SeventhPageTitle2') }}</h5>
                     </div>
 
                     <div class="col-md-6 col-lg-4">
                         <div class="box my-4" v-for="(item, index) in items" :key="index" >
                             <div :class="{ active: selectedItem(item.title)}" @click="toggleActive(item.title)" class="innerBox">
                                 <div >
-                                    <p >{{item.title}}</p>
+                                    <p >{{ translate(item.title) }}</p>
                                 </div>
                             </div>
                         </div>
@@ -33,7 +33,7 @@
                             <div class=" col-sm-6 text-center">
                                 <div class="my-5 ">
                                     <router-link to="/eighthPage" class="button StartBtn Opportunity" :class="{ ClassDisabled: active }" >
-                                        Continue<img width="16" src="https://i.hizliresim.com/agv40t1.png" alt="" class="img-fluid " id="ThirdPageIcon">
+                                        {{ translate('GoAhead') }}<img width="16" src="https://i.hizliresim.com/agv40t1.png" alt="" class="img-fluid " id="ThirdPageIcon">
                                     </router-link>
                                     <router-view></router-view>
                                 </div>
@@ -52,36 +52,53 @@
 
 <script>
 import Header from '@/components/header.vue'
+    import en from "../locales/en.js";
+    import tr from "../locales/tr.js";
 export default {
         el: "#app",
+        mixins: [en, tr],
+
         data() {
             return {
                 items: [
-                    {title: 'American continent(1-3 country)',},
-                    {title: 'Europe continent(1-6 country)',},
-                    {title: 'Asia continent(1-10 country)',}
+                    {title: 'SeventhPageTitle3',},
+                    {title: 'SeventhPageTitle4',},
+                    {title: 'SeventhPageTitle5',}
                 ],
                 active: false,
                 selected: [],
+                lang: window.navigator.language.slice(0, 2),
             }
         },
         components:{
             Header
         },
-        methods: {
-        selectedItem(item) {
-            return this.selected.find(s => s === item)
-        },
-        toggleActive(item) {
-            if (this.selected.find(s => s === item)) {
-                this.selected = this.selected.filter(f => f !== item)
-            } 
-            else {
-                this.selected.push(item)
+        created() {
+            if (this.lang == 'en') {
+                return this.lang = 'en'
+            } else if (this.lang == 'tr') {
+                return this.lang = 'tr'
+            } else {
+                return this.lang = 'en'
             }
-            this.selected.length ? this.active = true : this.active = false
         },
-    },
+        methods: {
+            selectedItem(item) {
+                return this.selected.find(s => s === item)
+            },
+            toggleActive(item) {
+                if (this.selected.find(s => s === item)) {
+                    this.selected = this.selected.filter(f => f !== item)
+                } 
+                else {
+                    this.selected.push(item)
+                }
+                this.selected.length ? this.active = true : this.active = false
+            },
+            translate(prop) {
+                return this[this.lang][prop];
+            }
+        },
 }
 
 </script>

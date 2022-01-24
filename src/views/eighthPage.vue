@@ -17,8 +17,8 @@
 
                 <div class="row justify-content-center align-items-center text-center ">
                     <div class="col-md-10">
-                        <p class="py-3" style="color: #1488CC;">Last question!</p>
-                        <h2 class="fw-bolder mb-5">Share your Vue-VPN plan with other family members. would you like to share?</h2>
+                        <p class="py-3" style="color: #1488CC;">{{ translate('LastQuestion') }}</p>
+                        <h2 class="fw-bolder mb-5">{{ translate('EightPageTitle1') }}</h2>
 
                     </div>
 
@@ -27,7 +27,7 @@
                             <div class="innerBox">
                                 <router-link to="/ninethPage">
                                     <div class="card Fcard d-flex  flex-row justify-content-center align-items-center" style="padding: 1rem 2rem !important">
-                                        <p>{{item.title}}</p>
+                                        <p>{{ translate(item.title) }}</p>
                                     </div>
                                 </router-link>
                                 <router-view></router-view>
@@ -44,22 +44,42 @@
 
 <script>
 import Header from '@/components/header.vue'
-
+    import en from "../locales/en.js";
+    import tr from "../locales/tr.js";
     export default {
         el: '#app',
+        mixins: [en, tr],
+
         data () {
             return {
                 items: [
-                    {title: '2 person family plan',},
-                    {title: '4 person family plan',},
-                    {title: '6 person family plan'},
-                    {title: 'Just for myself',}
-                ]
+                    {title: 'EightPageTitle2',},
+                    {title: 'EightPageTitle3',},
+                    {title: 'EightPageTitle4'},
+                    {title: 'EightPageTitle5',}
+                ],
+                lang: window.navigator.language.slice(0, 2),
             }
         },
         components:{
             Header
-        }
+        },
+        created() {
+            window.addEventListener('resize', this.onResize);
+
+            if (this.lang == 'en') {
+                return this.lang = 'en'
+            } else if (this.lang == 'tr') {
+                return this.lang = 'tr'
+            } else {
+                return this.lang = 'en'
+            }
+        },
+        methods: {
+            translate(prop) {
+                return this[this.lang][prop];
+            }
+        },
     }
 </script>
 

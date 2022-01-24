@@ -1,6 +1,8 @@
 import {createRouter, createWebHistory} from "vue-router";
 import store from "@/store";
 
+
+
 const  routes = [
   {
     name: "HomePage",
@@ -9,14 +11,11 @@ const  routes = [
     component: () => import("@/views/Home") ,
     props: true
   },
-
   {
       name: "AboutPage",
       path:  "/about",
-      // component: HomeCmp
       component: () => import("@/views/About")
   },
-
   {
       name: "ThirdPage",
       path: "/thirdPage",
@@ -70,7 +69,6 @@ const  routes = [
       component: () => import("@/views/DownloadSection"),
       meta: { requiresAuth: true }
   },
-
 ];
 
 const router = createRouter({

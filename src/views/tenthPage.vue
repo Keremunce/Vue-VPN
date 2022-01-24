@@ -8,15 +8,15 @@
                 <div class="container-fluid" style="background-color:hsl(0, 0%, 95%);">
                     <div class="row flex-column justify-content-center align-items-center text-center">
                         <div class="col-md-6 my-5">
-                            <h1> Please enter your e-mail adress </h1>
-                            <p>Your Vue-Vpn account creating with this e-mail </p>
+                            <h1>{{ translate('TenthPageTitle1') }}  </h1>
+                            <p>{{ translate('TenthPageTitle2') }} </p>
                         </div>
 
                         <div class="col-xs-12 col-sm-8 col-md-7 col-lg-5 my-5">
                             <div class="card p-5">
                                 <div class="inputDiv">
                                     <i class="fas fa-envelope-open-text"></i>
-                                    <input type="text" class="email_input w-100" placeholder="Email" v-model="state.email" @input="updateValueinput"  v-on:keyup.enter="login()"/>
+                                    <input type="text" class="email_input w-100" placeholder="Email" v-model="state.email" @input="updateValueinput"  v-on:keyup.enter="submitForm()"/>
 
 
                                 </div>
@@ -28,13 +28,13 @@
                                 <div class=" text-center">
                                     <div class="my-5 ">
                                         <button @click="submitForm()"  to="/BuyingPage" class="button StartBtn Opportunity" :class="{ ClassDisabled: active }"  >
-                                            Continue<img width="16" src="https://i.hizliresim.com/agv40t1.png" alt="" class="img-fluid " id="ThirdPageIcon">
+                                            {{ translate('GoAhead') }} <img width="16" src="https://i.hizliresim.com/agv40t1.png" alt="" class="img-fluid " id="ThirdPageIcon">
                                         </button>
                                     </div>
                                 </div>
 
                                 <div>
-                                    <p>We guarantee the security of your information. Updates and campaigns related to your account will be sent to this e-mail address. As you proceed, you accept the JetVPN Privacy and Usage agreements. </p>
+                                    <p>{{ translate('TenthPageTitle3') }} </p>
                                 </div>
                             </div>
                         </div>
@@ -51,10 +51,13 @@ import useValidate from "@vuelidate/core";
 import {required, email,  } from "@vuelidate/validators";
 import {reactive, computed} from "vue";
 import store from "@/store";
-
+    import en from "../locales/en.js";
+    import tr from "../locales/tr.js";
 
     export default {
         el: '#app',
+        mixins: [en, tr],
+
         setup() {
             const state = reactive({
                 email: '',
@@ -80,11 +83,21 @@ import store from "@/store";
         data() {
             return {
                 active: false,
+                lang: window.navigator.language.slice(0, 2),
             }
         },
 
         components:{
             Header
+        },
+        created() {
+            if (this.lang == 'en') {
+                return this.lang = 'en'
+            } else if (this.lang == 'tr') {
+                return this.lang = 'tr'
+            } else {
+                return this.lang = 'en'
+            }
         },
 
         methods: {
@@ -104,16 +117,19 @@ import store from "@/store";
                 this.$router.push(redirectPath);
             },
             submitForm() {
-                console.log(this.v$)
+                // console.log(this.v$)
                 this.v$.$validate() // checks all inputs
                 if (!this.v$.$error) { // if ANY fail validation
-                    console.log('Form SUCCESS submitted.');
+                    // console.log('Form SUCCESS submitted.');
                     this.login();
                     
                 } else {
-                    console.log('Form FAILED validation')
+                    // console.log('Form FAILED validation')
                 }
             },
+            translate(prop) {
+                return this[this.lang][prop];
+            }
         },
 
     }

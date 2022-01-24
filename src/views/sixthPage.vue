@@ -17,7 +17,7 @@
 
                 <div class="row justify-content-center align-items-center text-center ">
                     <div class="col-md-12">
-                        <h2 class="fw-bolder my-5">How many GB of data do you need monthly?</h2>
+                        <h2 class="fw-bolder my-5">{{ translate('SixthPageTitle1') }}</h2>
 
                     </div>
                     
@@ -26,7 +26,7 @@
                             <div class="innerBox">
                                 <router-link to="/seventhPage">
                                     <div class="card Fcard d-flex  flex-row justify-content-center align-items-center" style="padding: 1rem 2rem !important">
-                                        <p>{{item.title}}</p>
+                                        <p>{{ translate(item.title)}}</p>
                                     </div>
                                 </router-link>
                                 <router-view></router-view>
@@ -44,22 +44,41 @@
 
 <script>
 import Header from '@/components/header.vue'
-
+    import en from "../locales/en.js";
+    import tr from "../locales/tr.js";
     export default {
         el: '#app',
+        mixins: [en, tr],
         data () {
             return {
                 items: [
-                    {title: '1-2 GB between',},
-                    {title: '2-5 GB between',},
-                    {title: '5-10 GB between'},
-                    {title: 'Limitless',}
-                ]
+                    {title: 'SixthPageTitle2',},
+                    {title: 'SixthPageTitle3',},
+                    {title: 'SixthPageTitle4'},
+                    {title: 'SixthPageTitle5',}
+                ],
+                lang: window.navigator.language.slice(0, 2),
+
             }
         },
         components:{
             Header
-        }
+        },
+        created() {
+
+            if (this.lang == 'en') {
+                return this.lang = 'en'
+            } else if (this.lang == 'tr') {
+                return this.lang = 'tr'
+            } else {
+                return this.lang = 'en'
+            }
+        },
+        methods: {
+            translate(prop) {
+                return this[this.lang][prop];
+            }
+        },
     }
 </script>
 

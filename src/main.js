@@ -18,7 +18,8 @@ import veProgress from "vue-ellipse-progress";
 
 
 
-const app = createApp(App);
+
+const app = createApp(App)
 app.component('vue3-autocounter', Vue3Autocounter)
 app.use(router);
 app.use(Vuex);
@@ -28,26 +29,3 @@ app.use(store);
 
 
 app.mount("#app");
-
-
-
-
-
-
-
-
-
-
-// const store = new Vuex.Store(
-//     {
-//         user: null,
-//         state: {
-//             authenticated: false
-//         },
-//         mutations: {
-//             setAuthentication(state, status) {
-//                 state.authenticated = status;
-//             }
-//         }
-//     }
-// )
